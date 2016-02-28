@@ -2,8 +2,11 @@ CXX=i686-w64-mingw32-g++
 TARGET_DIR=./build/
 TARGET=libkmsjsonrpc.dll
 
+CXXFLAGS=--std=gnu++17 -fpermissive
+
 CFLAGS= \
--I./src/jsonrpc/
+-I./src/jsonrpc/ \
+-I../jsoncpp/include/
 
 SRC= \
 ./src/JsonFixes.cpp \
@@ -12,13 +15,12 @@ SRC= \
 ./src/JsonRpcUtils.cpp
 
 LIBS= \
--L/usr/i686-w64-mingw32/sys-root/mingw/lib \
--L/usr/lib/gcc/i686-w64-mingw32/5.2.0 \
--L/usr/i686-w64-mingw32/lib/
+-L../jsoncpp/build \
+-lkmsjsoncpp.dll
 
 all:
 	mkdir -p $(TARGET_DIR)
-	$(CXX) -shared -o $(TARGET_DIR)/$(TARGET) $(CFLAGS) $(SRC) $(LIBS) -Wl,--out-implib,$(TARGET_DIR)/$(TARGET).a
+	$(CXX) -shared -o $(TARGET_DIR)/$(TARGET) $(CFLAGS) $(CXXFLAGS) $(SRC) $(LIBS) -Wl,--out-implib,$(TARGET_DIR)/$(TARGET).a
 
 .PHONY: clean
 clean:
