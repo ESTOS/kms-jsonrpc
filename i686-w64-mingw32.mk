@@ -1,4 +1,4 @@
-CXX=i686-w64-mingw32-g++
+CXX=i686-w64-mingw32-g++ -g -o0
 TARGET_DIR=./build/
 TARGET=libkmsjsonrpc.dll
 
