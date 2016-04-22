@@ -1,6 +1,10 @@
-CXX=i686-w64-mingw32-g++ -g -o0
+CXX=i686-w64-mingw32-g++
 TARGET_DIR=./build/
 TARGET=libkmsjsonrpc.dll
+
+ifdef DEBUG
+CXX += -g -o0
+endif
 
 CXXFLAGS=--std=gnu++17 -fpermissive
 
@@ -19,6 +23,7 @@ LIBS= \
 -lkmsjsoncpp.dll
 
 all:
+	@echo "CXX: " $(CXX)
 	mkdir -p $(TARGET_DIR)
 	$(CXX) -shared -o $(TARGET_DIR)/$(TARGET) $(CFLAGS) $(CXXFLAGS) $(SRC) $(LIBS) -Wl,--out-implib,$(TARGET_DIR)/$(TARGET).a
 
