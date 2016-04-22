@@ -23,7 +23,6 @@ LIBS= \
 -lkmsjsoncpp.dll
 
 all:
-	@echo "CXX: " $(CXX)
 	mkdir -p $(TARGET_DIR)
 	$(CXX) -shared -o $(TARGET_DIR)/$(TARGET) $(CFLAGS) $(CXXFLAGS) $(SRC) $(LIBS) -Wl,--out-implib,$(TARGET_DIR)/$(TARGET).a
 
