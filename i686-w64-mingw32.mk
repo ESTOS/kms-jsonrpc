@@ -4,6 +4,7 @@ TARGET=libkmsjsonrpc.dll
 
 ifdef DEBUG
 CXX += -g -o0
+TARGET_DIR = ./build/debug/
 endif
 
 CXXFLAGS=--std=gnu++17 -fpermissive
