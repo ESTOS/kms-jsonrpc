@@ -35,10 +35,9 @@ public:
 
   }
 
-  virtual ~TestTransport () {}
+  ~TestTransport() override = default;
 
-  void sendMessage (const std::string &data)
-  {
+  void sendMessage(const std::string &data) override {
     std::string response;
 
     handler.process (data, response);
@@ -53,17 +52,11 @@ private:
 class TestEchoTransport : public kurento::JsonRpc::Transport
 {
 public:
-  TestEchoTransport ()
-  {
+  TestEchoTransport() = default;
 
-  }
+  ~TestEchoTransport() override = default;
 
-  virtual ~TestEchoTransport () {}
-
-  void sendMessage (const std::string &data)
-  {
-    messageReceived (data);
-  }
+  void sendMessage(const std::string &data) override { messageReceived(data); }
 };
 
 void

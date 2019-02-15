@@ -1,3 +1,6 @@
+name: kms-jsonrpc
 dependencies:
   - name: kms-cmake-utils
+    version: ">= 6.7.0"
   - name: jsoncpp
+    version: ">= 1.6.3"

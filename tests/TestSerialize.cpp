@@ -21,6 +21,7 @@
 #include <boost/test/unit_test.hpp>
 #include <jsonrpc/JsonSerializer.hpp>
 #include <map>
+#include <iostream>
 
 BOOST_AUTO_TEST_CASE (serialize_map)
 {
@@ -103,9 +104,9 @@ BOOST_AUTO_TEST_CASE (serialize_list)
   kurento::JsonSerializer writer2 (true);
   kurento::JsonSerializer reader (false);
 
-  array.push_back ("first");
-  array.push_back ("2");
-  array.push_back ("three");
+  array.emplace_back("first");
+  array.emplace_back("2");
+  array.emplace_back("three");
 
   writer.Serialize ("array", array);
 
@@ -144,7 +145,7 @@ BOOST_AUTO_TEST_CASE (serialize_vector)
 BOOST_AUTO_TEST_CASE (serialize_int64)
 {
   int64_t data = LLONG_MAX;
-  int64_t newData;
+  int64_t newData = 0;
   kurento::JsonSerializer writer (true);
   kurento::JsonSerializer writer2 (true);
   kurento::JsonSerializer reader (false);
